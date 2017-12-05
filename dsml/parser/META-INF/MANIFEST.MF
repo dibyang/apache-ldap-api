@@ -1,0 +1,58 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1512456390445
+Build-Jdk: 1.8.0_111
+Built-By: dib
+Bundle-Description: The Apache Directory Project provides directory solu
+ tions entirely written in Java. These include a directory server, which
+  has been certified as LDAP v3 compliant     by the Open Group (Apache 
+ Directory Server), and Eclipse-based directory tools (Apache Directory 
+ Studio).
+Bundle-DocURL: https://www.apache.org/
+Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Directory LDAP API DSML Parser
+Bundle-SymbolicName: com.ls.neo2.directory.api.dsmlv2.parser
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.directory.api.dsmlv2;version="1.0.0";uses:="o
+ rg.apache.directory.api.dsmlv2.request,org.apache.directory.api.dsmlv2.
+ response,org.apache.directory.api.ldap.codec.api,org.apache.directory.a
+ pi.ldap.model.message,org.dom4j,org.xmlpull.v1",org.apache.directory.ap
+ i.dsmlv2.response;version="1.0.0";uses:="org.apache.directory.api.asn1.
+ util,org.apache.directory.api.dsmlv2,org.apache.directory.api.ldap.code
+ c.api,org.apache.directory.api.ldap.model.entry,org.apache.directory.ap
+ i.ldap.model.exception,org.apache.directory.api.ldap.model.message,org.
+ apache.directory.api.ldap.model.name,org.apache.directory.api.ldap.mode
+ l.url,org.dom4j",org.apache.directory.api.dsmlv2.request;version="1.0.0
+ ";uses:="org.apache.directory.api.asn1,org.apache.directory.api.asn1.ut
+ il,org.apache.directory.api.dsmlv2,org.apache.directory.api.ldap.codec.
+ api,org.apache.directory.api.ldap.model.entry,org.apache.directory.api.
+ ldap.model.exception,org.apache.directory.api.ldap.model.filter,org.apa
+ che.directory.api.ldap.model.message,org.apache.directory.api.ldap.mode
+ l.name,org.dom4j"
+Implementation-Title: Apache Directory LDAP API DSML Parser
+Implementation-URL: http://directory.apache.org/api-parent/api-dsml-pare
+ nt/api-dsml-parser/
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: com.ls.neo2.directory.api
+Implementation-Version: 1.0.0
+Import-Package: org.apache.directory.api.asn1;version="1.0.0",org.apache
+ .directory.api.asn1.util;version="1.0.0",org.apache.directory.api.i18n;
+ version="1.0.0",org.apache.directory.api.ldap.codec.api;version="1.0.0"
+ ,org.apache.directory.api.ldap.model.entry;version="1.0.0",org.apache.d
+ irectory.api.ldap.model.exception;version="1.0.0",org.apache.directory.
+ api.ldap.model.filter;version="1.0.0",org.apache.directory.api.ldap.mod
+ el.ldif;version="1.0.0",org.apache.directory.api.ldap.model.message;ver
+ sion="1.0.0",org.apache.directory.api.ldap.model.message.controls;versi
+ on="1.0.0",org.apache.directory.api.ldap.model.name;version="1.0.0",org
+ .apache.directory.api.ldap.model.url;version="1.0.0",org.apache.directo
+ ry.api.util;version="1.0.0",org.dom4j;version="1.6.1",org.dom4j.io;vers
+ ion="1.6.1",org.dom4j.tree;version="1.6.1",org.slf4j;version="[1.7,1.8)
+ ",org.xmlpull.v1;version="1.1.0.4c",javax.xml.transform,javax.xml.trans
+ form.stream
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Specification-Title: Apache Directory LDAP API DSML Parser
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 1.0.0
+Tool: Bnd-3.3.0.201609221906

@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1512456319108
+Build-Jdk: 1.8.0_111
+Built-By: dib
+Bundle-Description: ASN.1 API
+Bundle-DocURL: https://www.apache.org/
+Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Directory API ASN.1 API
+Bundle-SymbolicName: com.ls.neo2.directory.api.asn1.api
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.directory.api.asn1;version="1.0.0",org.apache
+ .directory.api.asn1.util;version="1.0.0";uses:="org.apache.directory.ap
+ i.asn1"
+Implementation-Title: Apache Directory API ASN.1 API
+Implementation-URL: http://directory.apache.org/api-parent/api-asn1-pare
+ nt/api-asn1-api/
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: com.ls.neo2.directory.api
+Implementation-Version: 1.0.0
+Import-Package: org.apache.directory.api.i18n;version="1.0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Specification-Title: Apache Directory API ASN.1 API
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 1.0.0
+Tool: Bnd-3.3.0.201609221906

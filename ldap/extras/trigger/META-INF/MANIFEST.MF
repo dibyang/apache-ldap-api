@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1512456421737
+Build-Jdk: 1.8.0_111
+Built-By: dib
+Bundle-Description: Extra LDAP API Trigger API
+Bundle-DocURL: https://www.apache.org/
+Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Directory LDAP API Extras Trigger
+Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.trigger
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.directory.api.ldap.trigger;version="1.0.0";us
+ es:="antlr,antlr.collections.impl,javax.naming,javax.naming.ldap,org.ap
+ ache.directory.api.ldap.model.message,org.apache.directory.api.ldap.mod
+ el.name,org.apache.directory.api.ldap.model.schema"
+Import-Package: antlr;version="2.7.7",antlr.collections.impl;version="2.
+ 7.7",org.apache.commons.lang;version="2.6",org.apache.directory.api.i18
+ n;version="1.0.0",org.apache.directory.api.ldap.model.entry;version="1.
+ 0.0",org.apache.directory.api.ldap.model.message;version="1.0.0",org.ap
+ ache.directory.api.ldap.model.name;version="1.0.0",org.apache.directory
+ .api.ldap.model.schema;version="1.0.0",org.slf4j;version="[1.7,1.8)",ja
+ vax.naming,javax.naming.directory,javax.naming.ldap,org.apache.director
+ y.api.ldap.model.constants;version="1.0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Tool: Bnd-3.3.0.201609221906

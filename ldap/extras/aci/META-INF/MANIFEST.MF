@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1512456393911
+Build-Jdk: 1.8.0_111
+Built-By: dib
+Bundle-Description: Extra LDAP API for Access Control Items
+Bundle-DocURL: https://www.apache.org/
+Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Directory LDAP API Extras ACI
+Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.aci
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.directory.api.ldap.aci;version="1.0.0";uses:=
+ "antlr,antlr.collections.impl,org.apache.directory.api.ldap.aci.protect
+ edItem,org.apache.directory.api.ldap.model.constants,org.apache.directo
+ ry.api.ldap.model.filter,org.apache.directory.api.ldap.model.name,org.a
+ pache.directory.api.ldap.model.schema,org.apache.directory.api.ldap.mod
+ el.schema.normalizers,org.apache.directory.api.ldap.model.subtree",org.
+ apache.directory.api.ldap.aci.protectedItem;version="1.0.0";uses:="org.
+ apache.directory.api.ldap.aci,org.apache.directory.api.ldap.model.entry
+ ,org.apache.directory.api.ldap.model.filter,org.apache.directory.api.ld
+ ap.model.schema"
+Import-Package: antlr;version="2.7.7",antlr.collections.impl;version="2.
+ 7.7",org.apache.directory.api.i18n;version="1.0.0",org.apache.directory
+ .api.ldap.model.constants;version="1.0.0",org.apache.directory.api.ldap
+ .model.entry;version="1.0.0",org.apache.directory.api.ldap.model.except
+ ion;version="1.0.0",org.apache.directory.api.ldap.model.filter;version=
+ "1.0.0",org.apache.directory.api.ldap.model.name;version="1.0.0",org.ap
+ ache.directory.api.ldap.model.schema;version="1.0.0",org.apache.directo
+ ry.api.ldap.model.schema.normalizers;version="1.0.0",org.apache.directo
+ ry.api.ldap.model.subtree;version="1.0.0",org.apache.directory.api.util
+ ;version="1.0.0",org.slf4j;version="[1.7,1.8)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Tool: Bnd-3.3.0.201609221906
