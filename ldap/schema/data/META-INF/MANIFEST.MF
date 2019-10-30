@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1512456399519
+Bnd-LastModified: 1572416872389
 Build-Jdk: 1.8.0_111
-Built-By: dib
+Built-By: admin
 Bundle-Description: Jar bundled LDIF files containing schema data using 
  the Apache Directory    specific meta schema for describing schema info
  rmation using LDAP.  This    jar can be used by clients as well as by A
