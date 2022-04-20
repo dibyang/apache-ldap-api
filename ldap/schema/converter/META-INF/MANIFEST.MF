@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1572417050925
+Bnd-LastModified: 1650440737241
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: LDAP Schema Converter
@@ -9,19 +9,20 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Schema Converter
 Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.schema.converter
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.apache.directory.api.ldap.schema.converter;version="
- 1.0.0";uses:="antlr,antlr.collections.impl,org.apache.directory.api.lda
- p.model.exception,org.apache.directory.api.ldap.model.schema"
-Import-Package: org.apache.directory.api.i18n;version="1.0.0",org.apache
- .directory.api.ldap.model.entry;version="1.0.0",org.apache.directory.ap
- i.ldap.model.exception;version="1.0.0",org.apache.directory.api.ldap.mo
- del.ldif;version="1.0.0",org.apache.directory.api.ldap.model.name;versi
- on="1.0.0",org.apache.directory.api.ldap.model.schema;version="1.0.0",o
- rg.apache.directory.api.util;version="1.0.0",org.slf4j;version="[1.7,1.
- 8)",antlr;version="2.7.7",antlr.collections.impl;version="[2.7,3)",org.
- apache.commons.lang.exception;version="[2.6,3)",org.apache.directory.ap
- i.ldap.model.constants;version="1.0.0"
+ 1.0.0.V20220420";uses:="antlr,antlr.collections.impl,org.apache.directo
+ ry.api.ldap.model.exception,org.apache.directory.api.ldap.model.schema"
+Import-Package: org.apache.directory.api.i18n;version="1.0.0.V20220420",
+ org.apache.directory.api.ldap.model.entry;version="1.0.0.V20220420",org
+ .apache.directory.api.ldap.model.exception;version="1.0.0.V20220420",or
+ g.apache.directory.api.ldap.model.ldif;version="1.0.0.V20220420",org.ap
+ ache.directory.api.ldap.model.name;version="1.0.0.V20220420",org.apache
+ .directory.api.ldap.model.schema;version="1.0.0.V20220420",org.apache.d
+ irectory.api.util;version="1.0.0.V20220420",org.slf4j;version="[1.7,1.8
+ )",antlr;version="2.7.7",antlr.collections.impl;version="[2.7,3)",org.a
+ pache.commons.lang.exception;version="[2.6,3)",org.apache.directory.api
+ .ldap.model.constants;version="1.0.0.V20220420"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Tool: Bnd-3.3.0.201609221906

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1572416729868
+Bnd-LastModified: 1650440689988
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Activator: org.apache.directory.api.ldap.codec.protocol.mina.Ldap
@@ -12,21 +12,23 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Network MINA
 Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.net.mina
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.apache.directory.api.ldap.codec.protocol.mina;versio
- n="1.0.0";uses:="org.apache.directory.api.ldap.codec.api,org.apache.min
- a.core.buffer,org.apache.mina.core.session,org.apache.mina.filter.codec
- ,org.osgi.framework"
-Import-Package: org.apache.directory.api.asn1;version="1.0.0",org.apache
- .directory.api.asn1.ber;version="1.0.0",org.apache.directory.api.asn1.b
- er.tlv;version="1.0.0",org.apache.directory.api.ldap.codec.api;version=
- "1.0.0",org.apache.directory.api.ldap.model.constants;version="1.0.0",o
- rg.apache.directory.api.ldap.model.exception;version="1.0.0",org.apache
- .directory.api.ldap.model.message;version="1.0.0",org.apache.directory.
- api.util;version="1.0.0",org.apache.mina.core.buffer;version="2.0.16",o
- rg.apache.mina.core.session;version="2.0.16",org.apache.mina.filter.cod
- ec;version="2.0.16",org.slf4j;version="[1.7,1.8)",org.osgi.framework;ve
- rsion="[1.0.0,2.0.0)",org.osgi.util.tracker;version="[1.0.0,2.0.0)"
+ n="1.0.0.V20220420";uses:="org.apache.directory.api.ldap.codec.api,org.
+ apache.mina.core.buffer,org.apache.mina.core.session,org.apache.mina.fi
+ lter.codec,org.osgi.framework"
+Import-Package: org.apache.directory.api.asn1;version="1.0.0.V20220420",
+ org.apache.directory.api.asn1.ber;version="1.0.0.V20220420",org.apache.
+ directory.api.asn1.ber.tlv;version="1.0.0.V20220420",org.apache.directo
+ ry.api.ldap.codec.api;version="1.0.0.V20220420",org.apache.directory.ap
+ i.ldap.model.constants;version="1.0.0.V20220420",org.apache.directory.a
+ pi.ldap.model.exception;version="1.0.0.V20220420",org.apache.directory.
+ api.ldap.model.message;version="1.0.0.V20220420",org.apache.directory.a
+ pi.util;version="1.0.0.V20220420",org.apache.mina.core.buffer;version="
+ 2.0.23",org.apache.mina.core.session;version="2.0.23",org.apache.mina.f
+ ilter.codec;version="2.0.23",org.slf4j;version="[1.7,1.8)",org.osgi.fra
+ mework;version="[1.0.0,2.0.0)",org.osgi.util.tracker;version="[1.0.0,2.
+ 0.0)"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Tool: Bnd-3.3.0.201609221906

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1572416514127
+Bnd-LastModified: 1650440648912
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: Utilities shared across this top level project
@@ -9,12 +9,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Utilities
 Bundle-SymbolicName: com.ls.neo2.directory.api.util
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
-Export-Package: org.apache.directory.api.util;version="1.0.0";uses:="jav
- ax.naming",org.apache.directory.api.util.exception;version="1.0.0"
-Import-Package: org.apache.directory.api.i18n;version="1.0.0",org.slf4j;
- version="[1.7,1.8)",javax.naming,javax.naming.directory,javax.naming.ld
- ap
+Export-Package: org.apache.directory.api.util;version="1.0.0.V20220420";
+ uses:="javax.naming",org.apache.directory.api.util.exception;version="1
+ .0.0.V20220420"
+Import-Package: org.apache.directory.api.i18n;version="1.0.0.V20220420",
+ org.slf4j;version="[1.7,1.8)",javax.naming,javax.naming.directory,javax
+ .naming.ldap
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Tool: Bnd-3.3.0.201609221906

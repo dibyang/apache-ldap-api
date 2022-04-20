@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1572416478823
+Bnd-LastModified: 1650440644187
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: Internationalization of errors and other messages
@@ -9,16 +9,16 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API I18n
 Bundle-SymbolicName: com.ls.neo2.directory.api.i18n
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
-Export-Package: org.apache.directory.api.i18n;version="1.0.0"
+Export-Package: org.apache.directory.api.i18n;version="1.0.0.V20220420"
 Implementation-Title: Apache Directory LDAP API I18n
 Implementation-URL: http://directory.apache.org/api-parent/api-i18n/
 Implementation-Vendor: The Apache Software Foundation
 Implementation-Vendor-Id: com.ls.neo2.directory.api
-Implementation-Version: 1.0.0
+Implementation-Version: 1.0.0-V20220420
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Specification-Title: Apache Directory LDAP API I18n
 Specification-Vendor: The Apache Software Foundation
-Specification-Version: 1.0.0
+Specification-Version: 1.0.0-V20220420
 Tool: Bnd-3.3.0.201609221906

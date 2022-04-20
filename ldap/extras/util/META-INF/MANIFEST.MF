@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1572417017902
+Bnd-LastModified: 1650440731723
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: LDAP API Extra utility packages used by clients and 
@@ -10,19 +10,21 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Extras Util
 Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.util
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
-Export-Package: org.apache.directory.api.ldap.util;version="1.0.0";uses:
- ="javax.naming,javax.naming.ldap,org.apache.directory.api.asn1,org.apac
- he.directory.api.ldap.codec.api,org.apache.directory.api.ldap.model.mes
- sage,org.apache.directory.api.ldap.model.name",org.apache.directory.api
- .ldap.util.tree;version="1.0.0";uses:="org.apache.directory.api.ldap.mo
- del.exception,org.apache.directory.api.ldap.model.name"
-Import-Package: org.apache.directory.api.asn1;version="1.0.0",org.apache
- .directory.api.ldap.codec.api;version="1.0.0",org.apache.directory.api.
- ldap.model.exception;version="1.0.0",org.apache.directory.api.ldap.mode
- l.message;version="1.0.0",org.apache.directory.api.ldap.model.name;vers
- ion="1.0.0",org.slf4j;version="[1.7,1.8)",javax.naming,javax.naming.dir
- ectory,javax.naming.ldap
+Export-Package: org.apache.directory.api.ldap.util;version="1.0.0.V20220
+ 420";uses:="javax.naming,javax.naming.ldap,org.apache.directory.api.asn
+ 1,org.apache.directory.api.ldap.codec.api,org.apache.directory.api.ldap
+ .model.message,org.apache.directory.api.ldap.model.name",org.apache.dir
+ ectory.api.ldap.util.tree;version="1.0.0.V20220420";uses:="org.apache.d
+ irectory.api.ldap.model.exception,org.apache.directory.api.ldap.model.n
+ ame"
+Import-Package: org.apache.directory.api.asn1;version="1.0.0.V20220420",
+ org.apache.directory.api.ldap.codec.api;version="1.0.0.V20220420",org.a
+ pache.directory.api.ldap.model.exception;version="1.0.0.V20220420",org.
+ apache.directory.api.ldap.model.message;version="1.0.0.V20220420",org.a
+ pache.directory.api.ldap.model.name;version="1.0.0.V20220420",org.slf4j
+ ;version="[1.7,1.8)",javax.naming,javax.naming.directory,javax.naming.l
+ dap
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Tool: Bnd-3.3.0.201609221906

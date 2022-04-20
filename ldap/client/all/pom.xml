@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.ls.neo2.directory.api</groupId>
     <artifactId>api-ldap-client-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-V20220420</version>
   </parent>
   
   <artifactId>api-ldap-client-all</artifactId>
@@ -88,7 +88,7 @@
             </goals>
             <configuration>
               <createDependencyReducedPom>true</createDependencyReducedPom>
-              <createSourcesJar>true</createSourcesJar>
+              <createSourcesJar>false</createSourcesJar>
             </configuration>
           </execution>
         </executions>

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1572417026947
+Bnd-LastModified: 1650440733553
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: Extras LDAP API stored procedure packages used by cl
@@ -10,15 +10,15 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Extras Stored Procedures
 Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.sp
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
-Export-Package: org.apache.directory.api.ldap.sp;version="1.0.0";uses:="
- javax.naming,javax.naming.ldap"
+Export-Package: org.apache.directory.api.ldap.sp;version="1.0.0.V2022042
+ 0";uses:="javax.naming,javax.naming.ldap"
 Import-Package: org.apache.commons.lang;version="2.6",org.apache.directo
- ry.api.ldap.codec.api;version="1.0.0",org.apache.directory.api.ldap.ext
- ras.extended.storedProcedure;version="1.0.0",org.apache.directory.api.l
- dap.model.message;version="1.0.0",javax.naming,javax.naming.directory,j
- avax.naming.ldap,org.apache.directory.api.ldap.model.constants;version=
- "1.0.0"
+ ry.api.ldap.codec.api;version="1.0.0.V20220420",org.apache.directory.ap
+ i.ldap.extras.extended.storedProcedure;version="1.0.0.V20220420",org.ap
+ ache.directory.api.ldap.model.message;version="1.0.0.V20220420",javax.n
+ aming,javax.naming.directory,javax.naming.ldap,org.apache.directory.api
+ .ldap.model.constants;version="1.0.0.V20220420"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Tool: Bnd-3.3.0.201609221906

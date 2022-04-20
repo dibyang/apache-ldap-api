@@ -3,7 +3,7 @@
   <parent>
     <artifactId>api-parent</artifactId>
     <groupId>com.ls.neo2.directory.api</groupId>
-    <version>1.0.0</version>
+    <version>1.0.0-V20220420</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>api-all</artifactId>
@@ -25,7 +25,7 @@
                 </includes>
               </artifactSet>
               <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
-              <createSourcesJar>true</createSourcesJar>
+              <createSourcesJar>false</createSourcesJar>
             </configuration>
           </execution>
         </executions>
@@ -66,7 +66,7 @@
     <dependency>
       <groupId>org.apache.mina</groupId>
       <artifactId>mina-core</artifactId>
-      <version>2.0.16</version>
+      <version>2.0.23</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
