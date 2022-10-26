@@ -20,7 +20,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.ls.neo2.directory.api</groupId>
+        <groupId>net.xdob.directory.api</groupId>
         <artifactId>api-parent</artifactId>
         <version>1.0.0-V20220420</version>
     </parent>
@@ -31,35 +31,35 @@
     <dependencies>
         <!-- Bundles under test -->
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-client-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-net-mina</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-schema-converter</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-extras-aci</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-extras-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-extras-sp</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-ldap-extras-trigger</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ls.neo2.directory.api</groupId>
+            <groupId>net.xdob.directory.api</groupId>
             <artifactId>api-dsml-engine</artifactId>
             <exclusions>
                 <exclusion>

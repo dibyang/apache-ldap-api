@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1650440698485
+Bnd-LastModified: 1666780463785
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Activator: org.apache.directory.api.ldap.extras.ExtrasBundleActiv
@@ -14,7 +14,7 @@ Bundle-DocURL: https://www.apache.org/
 Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Extras Codec
-Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.codec
+Bundle-SymbolicName: net.xdob.directory.api.ldap.extras.codec
 Bundle-Vendor: The Apache Software Foundation
 Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
@@ -92,7 +92,7 @@ Implementation-Title: Apache Directory LDAP API Extras Codec
 Implementation-URL: http://directory.apache.org/api-parent/api-ldap-pare
  nt/api-ldap-extras-parent/api-ldap-extras-codec/
 Implementation-Vendor: The Apache Software Foundation
-Implementation-Vendor-Id: com.ls.neo2.directory.api
+Implementation-Vendor-Id: net.xdob.directory.api
 Implementation-Version: 1.0.0-V20220420
 Import-Package: org.apache.directory.api.asn1;version="1.0.0.V20220420",
  org.apache.directory.api.asn1.actions;version="1.0.0.V20220420",org.apa

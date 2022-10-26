@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1650440733553
+Bnd-LastModified: 1666780513685
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: Extras LDAP API stored procedure packages used by cl
@@ -8,7 +8,7 @@ Bundle-DocURL: https://www.apache.org/
 Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Extras Stored Procedures
-Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.sp
+Bundle-SymbolicName: net.xdob.directory.api.ldap.extras.sp
 Bundle-Vendor: The Apache Software Foundation
 Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin

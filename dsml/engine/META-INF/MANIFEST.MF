@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1650440729759
+Bnd-LastModified: 1666780507956
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: The Apache Directory Project provides directory solu
@@ -11,7 +11,7 @@ Bundle-DocURL: https://www.apache.org/
 Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API DSML Engine
-Bundle-SymbolicName: com.ls.neo2.directory.api.dsmlv2.engine
+Bundle-SymbolicName: net.xdob.directory.api.dsmlv2.engine
 Bundle-Vendor: The Apache Software Foundation
 Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
@@ -25,7 +25,7 @@ Implementation-Title: Apache Directory LDAP API DSML Engine
 Implementation-URL: http://directory.apache.org/api-parent/api-dsml-pare
  nt/api-dsml-engine/
 Implementation-Vendor: The Apache Software Foundation
-Implementation-Vendor-Id: com.ls.neo2.directory.api
+Implementation-Vendor-Id: net.xdob.directory.api
 Implementation-Version: 1.0.0-V20220420
 Import-Package: org.apache.directory.api.asn1;version="1.0.0.V20220420",
  org.apache.directory.api.dsmlv2;version="1.0.0.V20220420",org.apache.di

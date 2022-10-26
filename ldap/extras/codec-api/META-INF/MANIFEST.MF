@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1650440692828
+Bnd-LastModified: 1666780455139
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: Extra LDAP controls and extended operation interface
@@ -8,7 +8,7 @@ Bundle-DocURL: https://www.apache.org/
 Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: Apache Directory LDAP API Extras Codec API
-Bundle-SymbolicName: com.ls.neo2.directory.api.ldap.extras.codec.api
+Bundle-SymbolicName: net.xdob.directory.api.ldap.extras.codec.api
 Bundle-Vendor: The Apache Software Foundation
 Bundle-Version: 1.0.0.V20220420
 Created-By: Apache Maven Bundle Plugin
