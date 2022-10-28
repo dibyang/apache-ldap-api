@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1666780812580
+Bnd-LastModified: 1666945699224
 Build-Jdk: 1.8.0_111
 Built-By: admin
 Bundle-Description: Jar bundled LDIF files containing schema data using 

@@ -133,16 +133,16 @@
           </configuration>
         </plugin>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-report-plugin</artifactId>
-          <configuration>
-            <aggregate>true</aggregate>
-           <forkCount>3</forkCount>
-           <reuseForks>true</reuseForks>
-           <argLine>-Xmx2048m -XX:MaxPermSize=512</argLine>
-          </configuration>
-        </plugin>
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--          <configuration>-->
+<!--            <aggregate>true</aggregate>-->
+<!--           <forkCount>3</forkCount>-->
+<!--           <reuseForks>true</reuseForks>-->
+<!--           <argLine>-Xmx2048m -XX:MaxPermSize=512</argLine>-->
+<!--          </configuration>-->
+<!--        </plugin>-->
 
         <plugin>
           <groupId>org.apache.rat</groupId>
@@ -285,10 +285,10 @@
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--      </plugin>-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -633,36 +633,36 @@
 
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <configuration>
-          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-        </configuration>
-        
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>dependencies</report>
-              <report>scm</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-     
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <inherited>false</inherited>
-        <configuration>
-          <aggregate>true</aggregate>
-          <inputEncoding>UTF-8</inputEncoding>
-          <outputEncoding>UTF-8</outputEncoding>
-          <windowTitle>Apache LDAP API ${project.version} Cross Reference</windowTitle>
-          <docTitle>Apache LDAP API ${project.version} Cross Reference</docTitle>
-        </configuration>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-project-info-reports-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>-->
+<!--          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>-->
+<!--        </configuration>-->
+<!--        -->
+<!--        <reportSets>-->
+<!--          <reportSet>-->
+<!--            <reports>-->
+<!--              <report>dependencies</report>-->
+<!--              <report>scm</report>-->
+<!--            </reports>-->
+<!--          </reportSet>-->
+<!--        </reportSets>-->
+<!--      </plugin>-->
+
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-jxr-plugin</artifactId>-->
+<!--        <inherited>false</inherited>-->
+<!--        <configuration>-->
+<!--          <aggregate>true</aggregate>-->
+<!--          <inputEncoding>UTF-8</inputEncoding>-->
+<!--          <outputEncoding>UTF-8</outputEncoding>-->
+<!--          <windowTitle>Apache LDAP API ${project.version} Cross Reference</windowTitle>-->
+<!--          <docTitle>Apache LDAP API ${project.version} Cross Reference</docTitle>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
  
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -706,30 +706,30 @@
       <id>apache-release</id>
       <build>
         <plugins>
-          <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>source-release-assembly</id>
-                <configuration>
-                  <!-- we have a dedicated distribution module -->
-                  <skipAssembly>true</skipAssembly>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.rat</groupId>
-            <artifactId>apache-rat-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>verify</phase>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-            </executions>
-         </plugin>
+<!--          <plugin>-->
+<!--            <artifactId>maven-assembly-plugin</artifactId>-->
+<!--            <executions>-->
+<!--              <execution>-->
+<!--                <id>source-release-assembly</id>-->
+<!--                <configuration>-->
+<!--                  &lt;!&ndash; we have a dedicated distribution module &ndash;&gt;-->
+<!--                  <skipAssembly>true</skipAssembly>-->
+<!--                </configuration>-->
+<!--              </execution>-->
+<!--            </executions>-->
+<!--          </plugin>-->
+<!--          <plugin>-->
+<!--            <groupId>org.apache.rat</groupId>-->
+<!--            <artifactId>apache-rat-plugin</artifactId>-->
+<!--            <executions>-->
+<!--              <execution>-->
+<!--                <phase>verify</phase>-->
+<!--                <goals>-->
+<!--                  <goal>check</goal>-->
+<!--                </goals>-->
+<!--              </execution>-->
+<!--            </executions>-->
+<!--         </plugin>-->
         </plugins>
       </build>
     </profile>
