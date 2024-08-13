@@ -21,9 +21,9 @@ package org.apache.directory.api.ldap.model.filter;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 
 
 /**
@@ -74,8 +74,7 @@ public class BranchNode extends AbstractExprNode
         {
             this.children = new ArrayList<>( childList.length );
         }
-
-        CollectionUtils.addAll( children, childList );
+        Collections.addAll(children, childList);
     }
 
 

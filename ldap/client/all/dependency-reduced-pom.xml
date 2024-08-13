@@ -3,7 +3,7 @@
   <parent>
     <artifactId>api-ldap-client-parent</artifactId>
     <groupId>net.xdob.directory.api</groupId>
-    <version>1.0.0-V20220420</version>
+    <version>1.0.0-M20V20240813</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>api-ldap-client-all</artifactId>

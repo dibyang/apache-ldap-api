@@ -3,7 +3,7 @@
   <parent>
     <artifactId>api-parent</artifactId>
     <groupId>net.xdob.directory.api</groupId>
-    <version>1.0.0-V20220420</version>
+    <version>1.0.0-M20V20240813</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>api-all</artifactId>
@@ -76,9 +76,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.2.2</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>4.4</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -90,7 +90,7 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.10</version>
+      <version>1.17.1</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

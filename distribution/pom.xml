@@ -22,7 +22,7 @@
   <parent>
     <groupId>net.xdob.directory.api</groupId>
     <artifactId>api-parent</artifactId>
-    <version>1.0.0-V20220420</version>
+    <version>1.0.0-M20V20240813</version>
   </parent>
   
   <artifactId>apache-ldap-api</artifactId>
@@ -81,8 +81,8 @@
     </dependency>
 
     <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
     </dependency>
 
     <dependency>

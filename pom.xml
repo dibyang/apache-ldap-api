@@ -30,14 +30,14 @@
   <artifactId>api-parent</artifactId>
   <name>Apache Directory LDAP API</name>
   <packaging>pom</packaging>
-  <version>1.0.0-V20220420</version>
+  <version>1.0.0-M20V20240813</version>
 
   <properties>
     <additionalparam>-Xdoclint:none</additionalparam>
     <projectName>ApacheDS-LDAP-API</projectName>
     <distMgmtSiteUrl>scpexe://people.apache.org/www/directory.apache.org/api/gen-docs/${project.version}/</distMgmtSiteUrl>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <host>nexus.doob.net.cn</host>
     <!-- Set versions for depending projects -->
     <skin.version>1.0.3</skin.version>
@@ -46,8 +46,8 @@
     
     <!-- Set versions for depending jars -->
     <antlr.version>2.7.7</antlr.version>
-    <commons.codec.version>1.10</commons.codec.version>
-    <commons.collections.version>3.2.2</commons.collections.version>
+    <commons.codec.version>1.17.1</commons.codec.version>
+    <commons.collections.version>4.4</commons.collections.version>
     <commons.lang.version>2.6</commons.lang.version>
     <commons.pool.version>1.6</commons.pool.version>
     <dom4j.version>1.6.1</dom4j.version>
@@ -285,6 +285,17 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <optimize>true</optimize>
+          <encoding>ISO-8859-1</encoding>
+        </configuration>
+      </plugin>
+
 <!--      <plugin>-->
 <!--        <groupId>org.apache.maven.plugins</groupId>-->
 <!--        <artifactId>maven-checkstyle-plugin</artifactId>-->
@@ -490,8 +501,8 @@
       </dependency>
 
       <dependency>
-        <groupId>commons-collections</groupId>
-        <artifactId>commons-collections</artifactId>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>
         <version>${commons.collections.version}</version>
       </dependency>
 
@@ -681,7 +692,7 @@
               <head>To do:</head>
             </tag>
           </tags>
-          <source>1.7</source>
+          <source>1.8</source>
           <excludePackageNames>org.apache.directory.api.ldap.model.schema.syntaxes</excludePackageNames>
           <show>public</show>
         </configuration>

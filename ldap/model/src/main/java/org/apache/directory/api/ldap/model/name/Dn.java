@@ -25,16 +25,8 @@ import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
-import org.apache.commons.collections.list.UnmodifiableList;
 import org.apache.directory.api.i18n.I18n;
 import org.apache.directory.api.ldap.model.entry.BinaryValue;
 import org.apache.directory.api.ldap.model.entry.StringValue;
@@ -720,7 +712,7 @@ public class Dn implements Iterable<Rdn>, Externalizable
     @SuppressWarnings("unchecked")
     public List<Rdn> getRdns()
     {
-        return UnmodifiableList.decorate( rdns );
+        return Collections.unmodifiableList(rdns);
     }
 
 

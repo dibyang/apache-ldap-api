@@ -29,8 +29,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.collections.MultiMap;
-import org.apache.commons.collections.map.MultiValueMap;
+import org.apache.commons.collections4.MultiMap;
+import org.apache.commons.collections4.map.MultiValueMap;
 import org.apache.directory.api.i18n.I18n;
 import org.apache.directory.api.ldap.model.entry.StringValue;
 import org.apache.directory.api.ldap.model.entry.Value;
@@ -506,7 +506,6 @@ public class Rdn implements Cloneable, Externalizable, Iterable<Ava>, Comparable
      *
      * @param upType The user provided type of the added Rdn.
      * @param type The normalized provided type of the added Rdn.
-     * @param upValue The user provided value of the added Rdn
      * @param value The normalized provided value of the added Rdn
      * @throws LdapInvalidDnException
      *             If the Rdn is invalid
