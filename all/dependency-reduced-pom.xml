@@ -3,7 +3,7 @@
   <parent>
     <artifactId>api-parent</artifactId>
     <groupId>net.xdob.directory.api</groupId>
-    <version>1.0.0-M20V20250312</version>
+    <version>1.0.0-M20V20260126</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>api-all</artifactId>
@@ -70,9 +70,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.6</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.20.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

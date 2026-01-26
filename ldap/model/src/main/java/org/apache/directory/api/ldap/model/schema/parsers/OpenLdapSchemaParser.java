@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.directory.api.i18n.I18n;
 import org.apache.directory.api.ldap.model.schema.AttributeType;
 import org.apache.directory.api.ldap.model.schema.MutableAttributeType;
@@ -292,13 +292,13 @@ public class OpenLdapSchemaParser extends AbstractSchemaParser<SchemaObject>
         catch ( RecognitionException re )
         {
             String msg = "Parser failure on:\n\t" + subject;
-            msg += "\nAntlr exception trace:\n" + ExceptionUtils.getFullStackTrace( re );
+            msg += "\nAntlr exception trace:\n" + ExceptionUtils.getStackTrace( re );
             throw new ParseException( msg, re.getColumn() );
         }
         catch ( TokenStreamException tse )
         {
             String msg = "Parser failure on:\n\t" + subject;
-            msg += "\nAntlr exception trace:\n" + ExceptionUtils.getFullStackTrace( tse );
+            msg += "\nAntlr exception trace:\n" + ExceptionUtils.getStackTrace( tse );
             throw new ParseException( msg, 0 );
         }
     }
