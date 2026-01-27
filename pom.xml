@@ -72,13 +72,13 @@
   <distributionManagement>
     <snapshotRepository>
       <id>snapshots</id>
-      <name>Snapshots</name>
-      <url>http://${host}:8081/repository/maven-snapshots/</url>
+      <name>ossrh-snapshots</name>
+      <url>https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/</url>
     </snapshotRepository>
     <repository>
-      <id>releases</id>
+      <id>ossrh</id>
       <name>Internal Releases</name>
-      <url>http://${host}:8081/repository/maven-releases/</url>
+      <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
       
     </repository>
   </distributionManagement>
@@ -132,7 +132,6 @@
             <tagNameFormat>@{project.version}</tagNameFormat>
           </configuration>
         </plugin>
-
 <!--        <plugin>-->
 <!--          <groupId>org.apache.maven.plugins</groupId>-->
 <!--          <artifactId>maven-surefire-report-plugin</artifactId>-->
@@ -267,6 +266,24 @@
             </lifecycleMappingMetadata>
           </configuration>
         </plugin>
+        <!-- 升级javadoc插件：3.6.3 解锁完整聚合能力，无低版本兼容问题 -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.6.3</version>
+        </plugin>
+        <!-- 升级source插件：3.3.0 聚合能力更稳定，适配高版本javadoc -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <!-- 升级shade插件：3.5.1 修复低版本bug，聚合打包更稳定 -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.5.1</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -295,7 +312,21 @@
           <encoding>ISO-8859-1</encoding>
         </configuration>
       </plugin>
-
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+        <!-- 无需任何configuration，插件自动读取settings.xml中的signing.*属性 -->
+      </plugin>
 <!--      <plugin>-->
 <!--        <groupId>org.apache.maven.plugins</groupId>-->
 <!--        <artifactId>maven-checkstyle-plugin</artifactId>-->
@@ -329,9 +360,26 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <!-- 绑定到package阶段：执行mvn package时自动生成Javadoc包 -->
+            <phase>package</phase>
+            <goals>
+              <!-- 核心goal：生成-javadoc.jar包，仓库必须检测到这个文件 -->
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- 解决中文乱码、语法警告导致构建失败的问题（避免Javadoc包生成中断） -->
         <configuration>
-          <show>private</show>
-          <nohelp>true</nohelp>
+          <encoding>UTF-8</encoding>
+          <docencoding>UTF-8</docencoding>
+          <charset>UTF-8</charset>
+          <!-- 忽略注释小问题，避免生成Javadoc包失败 -->
+          <failOnError>false</failOnError>
+          <!-- 兼容JDK11+的严格检查，解决JDK版本导致的生成失败 -->
+          <additionalJOption>-Xdoclint:none</additionalJOption>
         </configuration>
       </plugin>
 
