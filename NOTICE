@@ -15,7 +15,7 @@ This product includes/uses Apache Logging Services (http://logging.apache.org/).
 
 This product includes/uses Apache Felix (http://felix.apache.org/).
 
-This product uses Apache Maven (http://maven.apache.org/).
+This product uses Gradle (https://gradle.org/).
 
 This product includes/uses Apache Mina (http://mina.apache.org/).
 
