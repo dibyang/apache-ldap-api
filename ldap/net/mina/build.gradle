@@ -1,0 +1,17 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-net-mina'
+description = 'Apache Directory LDAP API Network MINA'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    api project(':api-ldap-codec-core')
+    api rootProject.ext.libs.minaCore
+    compileOnly rootProject.ext.libs.osgiCore
+}

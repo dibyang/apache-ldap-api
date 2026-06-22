@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-client-api'
+description = 'Apache Directory LDAP API Client API'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    api project(':api-ldap-schema-data')
+    api project(':api-ldap-codec-core')
+    api project(':api-ldap-extras-aci')
+    api project(':api-ldap-extras-codec')
+    api project(':api-ldap-extras-codec-api')
+    api rootProject.ext.libs.commonsPool
+    api rootProject.ext.libs.minaCore
+    testImplementation rootProject.ext.libs.junit
+    testImplementation rootProject.ext.libs.mockitoCore
+    testImplementation rootProject.ext.libs.slf4jLog4j12
+}

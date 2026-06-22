@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-dsml-parser'
+description = 'Apache Directory LDAP API DSML Parser'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    testImplementation project(':api-ldap-codec-standalone')
+    api project(':api-ldap-codec-core')
+    api project(':api-ldap-model')
+    api rootProject.ext.libs.servicemixDom4j
+    api rootProject.ext.libs.servicemixXpp3
+    compileOnly rootProject.ext.libs.findbugsAnnotations
+}

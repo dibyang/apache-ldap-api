@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-util'
+description = 'Apache Directory LDAP API Utilities'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-i18n')
+    api rootProject.ext.libs.slf4jApi
+    testImplementation rootProject.ext.libs.slf4jLog4j12
+}

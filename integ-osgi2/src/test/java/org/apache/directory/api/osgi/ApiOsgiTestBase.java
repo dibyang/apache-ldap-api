@@ -74,6 +74,7 @@ public abstract class ApiOsgiTestBase
     public Option[] config() throws IOException
     {
         List<Option> dependencies = new ArrayList<Option>();
+        String commonsLang3Version = System.getProperty( "commons.lang3.version" );
 
         URL resource = getClass().getResource( "/" );
         File targetTestClassesDir = new File( resource.getFile() );
@@ -95,7 +96,9 @@ public abstract class ApiOsgiTestBase
             systemProperty( "logback.configurationFile" ).value(
                 "file:" + PathUtils.getBaseDir() + "/src/test/resources/logback.xml" ),
             systemPackages( "javax.xml.stream;version=1.0.0", "javax.xml.stream.util;version=1.0.0",
-                "javax.xml.stream.events;version=1.0.0" ), mavenBundle( "ch.qos.logback", "logback-classic", "1.0.6" ),
+                "javax.xml.stream.events;version=1.0.0", "org.apache.commons.lang3;version=" + commonsLang3Version,
+                "org.apache.commons.lang3.exception;version=" + commonsLang3Version ),
+            mavenBundle( "ch.qos.logback", "logback-classic", "1.0.6" ),
             mavenBundle( "ch.qos.logback", "logback-core", "1.0.6" ), junitBundles(),
             composite( dependencies.toArray( new Option[0] ) ) );
     }
@@ -112,6 +115,7 @@ public abstract class ApiOsgiTestBase
     public void testBundleActivation()
     {
         String bundleName = getBundleName();
+        String forkBundleName = bundleName.replace( "org.apache.directory.api", "net.xdob.directory.api" );
 
         boolean bundleFound = false;
         boolean bundleActive = false;
@@ -119,7 +123,8 @@ public abstract class ApiOsgiTestBase
         for ( Bundle bundle : bundles )
         {
             //System.out.println( "### bundle=" + bundle + " " + bundle.getState() );
-            if ( bundle != null && bundle.getSymbolicName() != null && bundle.getSymbolicName().equals( bundleName ) )
+            if ( bundle != null && bundle.getSymbolicName() != null
+                && ( bundle.getSymbolicName().equals( bundleName ) || bundle.getSymbolicName().equals( forkBundleName ) ) )
             {
                 bundleFound = true;
                 if ( bundle.getState() == Bundle.ACTIVE )

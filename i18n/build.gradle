@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-i18n'
+description = 'Apache Directory LDAP API I18n'
+
+base {
+    archivesName = mavenArtifactId
+}

@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-dsml-engine'
+description = 'Apache Directory LDAP API DSML Engine'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    api project(':api-i18n')
+    api project(':api-dsml-parser')
+    api project(':api-ldap-client-api')
+    api rootProject.ext.libs.servicemixXpp3
+    api rootProject.ext.libs.servicemixDom4j
+}

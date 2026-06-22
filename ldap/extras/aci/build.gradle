@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'antlr'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-extras-aci'
+description = 'Apache Directory LDAP API Extras ACI'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    antlr rootProject.ext.libs.antlr
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-util')
+    api project(':api-i18n')
+    api project(':api-ldap-model')
+    compileOnly rootProject.ext.libs.antlr
+    api rootProject.ext.libs.servicemixAntlr
+}
+
+tasks.named('generateGrammarSource') {
+    maxHeapSize = '256m'
+}

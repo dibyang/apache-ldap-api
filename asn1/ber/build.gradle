@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-asn1-ber'
+description = 'Apache Directory API ASN.1 BER'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-i18n')
+    api project(':api-asn1-api')
+    api project(':api-util')
+    api rootProject.ext.libs.slf4jApi
+    compileOnly rootProject.ext.libs.findbugsAnnotations
+}

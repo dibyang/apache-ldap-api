@@ -1,0 +1,144 @@
+plugins {
+    id 'base'
+}
+
+ext.requiredProperty = { name ->
+    providers.gradleProperty(name).get()
+}
+
+allprojects {
+    group = requiredProperty('projectGroup')
+    version = requiredProperty('projectVersion')
+}
+
+ext.versions = [
+    antlr: requiredProperty('versions.antlr'),
+    commonsCodec: requiredProperty('versions.commonsCodec'),
+    commonsCollections: requiredProperty('versions.commonsCollections'),
+    commonsLang3: requiredProperty('versions.commonsLang3'),
+    commonsPool: requiredProperty('versions.commonsPool'),
+    dom4j: requiredProperty('versions.dom4j'),
+    findbugsAnnotations: requiredProperty('versions.findbugsAnnotations'),
+    junit: requiredProperty('versions.junit'),
+    junitAddons: requiredProperty('versions.junitAddons'),
+    log4j: requiredProperty('versions.log4j'),
+    logback: requiredProperty('versions.logback'),
+    minaCore: requiredProperty('versions.minaCore'),
+    mockito: requiredProperty('versions.mockito'),
+    osgiCore: requiredProperty('versions.osgiCore'),
+    felix: requiredProperty('versions.felix'),
+    paxExam: requiredProperty('versions.paxExam'),
+    paxUrl: requiredProperty('versions.paxUrl'),
+    slf4j: requiredProperty('versions.slf4j'),
+    slf4jLog4j12: requiredProperty('versions.slf4jLog4j12'),
+    xmlApis: requiredProperty('versions.xmlApis'),
+    xpp3: requiredProperty('versions.xpp3'),
+    javaxInjectBundle: requiredProperty('versions.javaxInjectBundle')
+]
+
+ext.libs = [
+    antlr: "antlr:antlr:${versions.antlr}",
+    commonsCodec: "commons-codec:commons-codec:${versions.commonsCodec}",
+    commonsCollections4: "org.apache.commons:commons-collections4:${versions.commonsCollections}",
+    commonsLang3: "org.apache.commons:commons-lang3:${versions.commonsLang3}",
+    commonsPool: "commons-pool:commons-pool:${versions.commonsPool}",
+    findbugsAnnotations: "findbugs:annotations:${versions.findbugsAnnotations}",
+    felixFramework: "org.apache.felix:org.apache.felix.framework:${versions.felix}",
+    javaxInjectBundle: "org.apache.servicemix.bundles:org.apache.servicemix.bundles.javax-inject:${versions.javaxInjectBundle}",
+    junit: "junit:junit:${versions.junit}",
+    junitAddons: "org.apache.directory.junit:junit-addons:${versions.junitAddons}",
+    log4j: "log4j:log4j:${versions.log4j}",
+    logbackClassic: "ch.qos.logback:logback-classic:${versions.logback}",
+    minaCore: "org.apache.mina:mina-core:${versions.minaCore}",
+    mockitoCore: "org.mockito:mockito-core:${versions.mockito}",
+    osgiCore: "org.osgi:org.osgi.core:${versions.osgiCore}",
+    paxExamContainerForked: "org.ops4j.pax.exam:pax-exam-container-forked:${versions.paxExam}",
+    paxExamJunit4: "org.ops4j.pax.exam:pax-exam-junit4:${versions.paxExam}",
+    paxExamLinkMvn: "org.ops4j.pax.exam:pax-exam-link-mvn:${versions.paxExam}",
+    paxUrlAether: "org.ops4j.pax.url:pax-url-aether:${versions.paxUrl}",
+    servicemixAntlr: "org.apache.servicemix.bundles:org.apache.servicemix.bundles.antlr:${versions.antlr}_5",
+    servicemixDom4j: "org.apache.servicemix.bundles:org.apache.servicemix.bundles.dom4j:${versions.dom4j}_5",
+    servicemixXpp3: "org.apache.servicemix.bundles:org.apache.servicemix.bundles.xpp3:${versions.xpp3}_7",
+    slf4jApi: "org.slf4j:slf4j-api:${versions.slf4j}",
+    slf4jLog4j12: "org.slf4j:slf4j-log4j12:${versions.slf4jLog4j12}",
+    xmlApis: "xml-apis:xml-apis:${versions.xmlApis}"
+]
+
+subprojects {
+    plugins.withType(JavaPlugin).configureEach {
+        java {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+            withSourcesJar()
+            withJavadocJar()
+        }
+
+        tasks.withType(JavaCompile).configureEach {
+            options.encoding = 'ISO-8859-1'
+        }
+
+        tasks.withType(Javadoc).configureEach {
+            options.encoding = 'UTF-8'
+            options.charSet = 'UTF-8'
+            options.docEncoding = 'UTF-8'
+            options.addStringOption('Xdoclint:none', '-quiet')
+            failOnError = false
+        }
+
+        dependencies {
+            testImplementation rootProject.ext.libs.junit
+        }
+
+        tasks.withType(Test).configureEach {
+            useJUnit()
+            testLogging {
+                events 'failed', 'skipped'
+                exceptionFormat 'full'
+            }
+        }
+
+        tasks.named('jar') {
+            def manifestFile = project.file('META-INF/MANIFEST.MF')
+            if (manifestFile.exists()) {
+                def sourceManifest = new java.util.jar.Manifest()
+                manifestFile.withInputStream { sourceManifest.read(it) }
+                def manifestAttributes = sourceManifest.mainAttributes.collectEntries { key, value ->
+                    def attributeName = key.toString()
+                    def attributeValue = value.toString()
+                        .replace('${project.version}', project.version.toString())
+                        .replace('${commons.lang.version}', rootProject.ext.versions.commonsLang3)
+                        .replace('${commons.lang3.version}', rootProject.ext.versions.commonsLang3)
+                        .replace('org.apache.commons.lang;version="' + rootProject.ext.versions.commonsLang3 + '"',
+                            'org.apache.commons.lang3;version="' + rootProject.ext.versions.commonsLang3 + '"')
+                    [(attributeName): attributeValue]
+                }
+                manifestAttributes.remove('Manifest-Version')
+                manifest {
+                    attributes(manifestAttributes)
+                }
+            }
+        }
+
+        tasks.named('sourcesJar') {
+            dependsOn tasks.matching {
+                it.name in ['generateGrammarSource', 'generateSchemaIndex']
+            }
+        }
+
+        plugins.withId('maven-publish') {
+            publishing {
+                publications {
+                    mavenJava(MavenPublication) {
+                        from components.java
+                    }
+                }
+            }
+
+            afterEvaluate {
+                publishing.publications.named('mavenJava') {
+                    artifactId = project.ext.mavenArtifactId
+                }
+            }
+        }
+    }
+}

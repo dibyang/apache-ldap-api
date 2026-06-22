@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-extras-sp'
+description = 'Apache Directory LDAP API Extras Stored Procedures'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-util')
+    api project(':api-i18n')
+    api project(':api-ldap-model')
+    api project(':api-ldap-extras-codec')
+    api project(':api-ldap-extras-util')
+    api rootProject.ext.libs.commonsLang3
+}

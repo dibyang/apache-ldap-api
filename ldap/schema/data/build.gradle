@@ -1,0 +1,47 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-schema-data'
+description = 'Apache Directory LDAP API Schema Data'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-i18n')
+    api project(':api-ldap-model')
+    testImplementation project(':api-ldap-extras-aci')
+}
+
+def generatedSchemaDir = layout.buildDirectory.dir('generated-resources/apacheds')
+
+tasks.register('generateSchemaIndex') {
+    def schemaFiles = fileTree('src/main/resources') {
+        include '**/*.ldif'
+        exclude 'schema-all.ldif'
+    }
+    inputs.files(schemaFiles)
+    outputs.file(generatedSchemaDir.map { it.file('META-INF/apacheds-schema.index') })
+    doLast {
+        def outputFile = generatedSchemaDir.get().file('META-INF/apacheds-schema.index').asFile
+        outputFile.parentFile.mkdirs()
+        def lines = schemaFiles.files.collect {
+            project.file('src/main/resources').toPath().relativize(it.toPath()).toString().replace(File.separatorChar, '/' as char)
+        }.sort()
+        outputFile.text = lines.join(System.lineSeparator()) + System.lineSeparator()
+    }
+}
+
+sourceSets.main.resources.srcDir(generatedSchemaDir)
+
+tasks.named('processResources') {
+    dependsOn tasks.named('generateSchemaIndex')
+}
+
+tasks.named('test') {
+    systemProperty 'workingDirectory', layout.buildDirectory.get().asFile.absolutePath
+}

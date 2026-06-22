@@ -1,0 +1,54 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        maven {
+            name = 'internalMavenPublic'
+            url = uri('http://nexus.doob.net.cn:8081/repository/maven-public/')
+            allowInsecureProtocol = true
+        }
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'apache-ldap-api'
+
+def moduleDirs = [
+    'distribution': 'distribution',
+    'api-all': 'all',
+    'api-asn1-api': 'asn1/api',
+    'api-asn1-ber': 'asn1/ber',
+    'api-dsml-engine': 'dsml/engine',
+    'api-dsml-parser': 'dsml/parser',
+    'api-i18n': 'i18n',
+    'api-integ': 'integ',
+    'api-integ-osgi': 'integ-osgi',
+    'api-integ-osgi2': 'integ-osgi2',
+    'api-ldap-client-all': 'ldap/client/all',
+    'api-ldap-client-api': 'ldap/client/api',
+    'api-ldap-codec-core': 'ldap/codec/core',
+    'api-ldap-codec-standalone': 'ldap/codec/standalone',
+    'api-ldap-extras-aci': 'ldap/extras/aci',
+    'api-ldap-extras-codec': 'ldap/extras/codec',
+    'api-ldap-extras-codec-api': 'ldap/extras/codec-api',
+    'api-ldap-extras-sp': 'ldap/extras/sp',
+    'api-ldap-extras-trigger': 'ldap/extras/trigger',
+    'api-ldap-extras-util': 'ldap/extras/util',
+    'api-ldap-model': 'ldap/model',
+    'api-ldap-net-mina': 'ldap/net/mina',
+    'api-ldap-schema-converter': 'ldap/schema/converter',
+    'api-ldap-schema-data': 'ldap/schema/data',
+    'api-util': 'util',
+]
+
+moduleDirs.each { moduleName, moduleDir ->
+    include moduleName
+    project(":${moduleName}").projectDir = file(moduleDir)
+}

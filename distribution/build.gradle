@@ -1,0 +1,37 @@
+plugins {
+    id 'distribution'
+}
+
+ext.mavenArtifactId = 'apache-ldap-api'
+description = 'Apache Directory LDAP API Distribution'
+
+configurations {
+    releaseContents
+}
+
+dependencies {
+    releaseContents project(':api-asn1-api')
+    releaseContents project(':api-i18n')
+    releaseContents project(':api-ldap-client-api')
+    releaseContents project(':api-ldap-extras-aci')
+    releaseContents project(':api-ldap-model')
+    releaseContents project(':api-ldap-schema-converter')
+    releaseContents project(':api-ldap-schema-data')
+    releaseContents project(':api-util')
+    releaseContents project(':api-all')
+    releaseContents rootProject.ext.libs.antlr
+    releaseContents rootProject.ext.libs.commonsCollections4
+    releaseContents rootProject.ext.libs.slf4jLog4j12
+    releaseContents rootProject.ext.libs.slf4jApi
+}
+
+distributions {
+    main {
+        contents {
+            from('src/main/release')
+            into('lib') {
+                from configurations.releaseContents
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-codec-standalone'
+description = 'Apache Directory LDAP API Codec Standalone'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-ldap-net-mina')
+    api project(':api-ldap-codec-core')
+    api project(':api-ldap-extras-codec')
+    api rootProject.ext.libs.minaCore
+}

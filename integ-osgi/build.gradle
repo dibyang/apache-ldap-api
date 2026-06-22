@@ -1,0 +1,75 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-integ-osgi'
+description = 'Apache Directory API OSGi Integration Tests'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    api project(':api-ldap-client-api')
+    api project(':api-ldap-net-mina')
+    api project(':api-ldap-schema-converter')
+    api project(':api-ldap-extras-aci')
+    api project(':api-ldap-extras-util')
+    api project(':api-ldap-extras-sp')
+    api project(':api-ldap-extras-trigger')
+    api(project(':api-dsml-engine')) {
+        exclude group: 'xml-apis', module: 'xml-apis'
+    }
+    testImplementation rootProject.ext.libs.javaxInjectBundle
+    testImplementation rootProject.ext.libs.junit
+    testImplementation rootProject.ext.libs.logbackClassic
+    testImplementation rootProject.ext.libs.paxExamContainerForked
+    testImplementation rootProject.ext.libs.paxExamJunit4
+    testImplementation rootProject.ext.libs.paxExamLinkMvn
+    testImplementation rootProject.ext.libs.paxUrlAether
+    testImplementation rootProject.ext.libs.felixFramework
+}
+
+tasks.register('copyRuntimeDependenciesForPaxExam', Copy) {
+    def nonBundleJarNames = [
+        "antlr-${rootProject.ext.versions.antlr}.jar",
+        "commons-lang3-${rootProject.ext.versions.commonsLang3}.jar",
+        "dom4j-${rootProject.ext.versions.dom4j}.jar",
+        "xpp3-${rootProject.ext.versions.xpp3}.jar"
+    ]
+    into layout.buildDirectory.dir('classes/java/dependency')
+    from configurations.runtimeClasspath
+    exclude nonBundleJarNames
+    doFirst {
+        delete destinationDir
+    }
+}
+
+tasks.register('copyRuntimeDependenciesForPaxExamResources', Copy) {
+    def nonBundleJarNames = [
+        "antlr-${rootProject.ext.versions.antlr}.jar",
+        "commons-lang3-${rootProject.ext.versions.commonsLang3}.jar",
+        "dom4j-${rootProject.ext.versions.dom4j}.jar",
+        "xpp3-${rootProject.ext.versions.xpp3}.jar"
+    ]
+    into layout.buildDirectory.dir('resources/dependency')
+    from configurations.runtimeClasspath
+    exclude nonBundleJarNames
+    doFirst {
+        delete destinationDir
+    }
+}
+
+tasks.named('processTestResources') {
+    dependsOn tasks.named('copyRuntimeDependenciesForPaxExam')
+    dependsOn tasks.named('copyRuntimeDependenciesForPaxExamResources')
+}
+
+tasks.withType(Test).configureEach {
+    def localMavenRepository = new File(System.getProperty('user.home'), '.m2/repository').toURI().toString()
+    systemProperty 'commons.lang3.version', rootProject.ext.versions.commonsLang3
+    systemProperty 'org.ops4j.pax.url.mvn.localRepository', localMavenRepository
+    systemProperty 'org.ops4j.pax.url.mvn.repositories',
+        "${localMavenRepository}@id=local,https://repo.maven.apache.org/maven2@id=central"
+}

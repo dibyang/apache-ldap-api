@@ -1,0 +1,27 @@
+plugins {
+    id 'java-library'
+    id 'antlr'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-extras-trigger'
+description = 'Apache Directory LDAP API Extras Trigger'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    antlr rootProject.ext.libs.antlr
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-util')
+    api project(':api-i18n')
+    api project(':api-ldap-model')
+    compileOnly rootProject.ext.libs.antlr
+    api rootProject.ext.libs.servicemixAntlr
+    api rootProject.ext.libs.commonsLang3
+}
+
+tasks.named('generateGrammarSource') {
+    maxHeapSize = '256m'
+}

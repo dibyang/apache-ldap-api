@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+    id 'antlr'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-model'
+description = 'Apache Directory LDAP API Model'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    antlr rootProject.ext.libs.antlr
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-util')
+    api project(':api-asn1-api')
+    api project(':api-asn1-ber')
+    api project(':api-i18n')
+    api rootProject.ext.libs.minaCore
+    compileOnly rootProject.ext.libs.antlr
+    api rootProject.ext.libs.servicemixAntlr
+    api rootProject.ext.libs.commonsLang3
+    api rootProject.ext.libs.commonsCollections4
+    api rootProject.ext.libs.commonsCodec
+    compileOnly rootProject.ext.libs.findbugsAnnotations
+}
+
+tasks.named('generateGrammarSource') {
+    maxHeapSize = '256m'
+}

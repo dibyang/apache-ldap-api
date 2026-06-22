@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-ldap-codec-core'
+description = 'Apache Directory LDAP API Codec Core'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    api project(':api-util')
+    api project(':api-asn1-api')
+    api project(':api-asn1-ber')
+    api project(':api-i18n')
+    api project(':api-ldap-model')
+    api rootProject.ext.libs.minaCore
+    api rootProject.ext.libs.commonsLang3
+    api rootProject.ext.libs.commonsCollections4
+    compileOnly rootProject.ext.libs.osgiCore
+}

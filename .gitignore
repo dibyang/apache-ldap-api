@@ -1,6 +1,8 @@
 /.idea/
 *.iml
 *.MF
+.gradle/
+/**/build/
 /**/target/
 /**/META-INF/
 /*/META-INF/

@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+ext.mavenArtifactId = 'api-integ'
+description = 'Apache Directory API Integration Tests'
+
+base {
+    archivesName = mavenArtifactId
+}
+
+dependencies {
+    testImplementation rootProject.ext.libs.junitAddons
+    testImplementation project(':api-ldap-schema-data')
+    testImplementation project(':api-ldap-extras-aci')
+    testImplementation project(':api-ldap-extras-codec')
+    testImplementation project(':api-ldap-net-mina')
+    testImplementation project(':api-ldap-codec-standalone')
+}
+
+tasks.register('copyCodecPlugin', Copy) {
+    from project(':api-ldap-extras-codec').tasks.named('jar')
+    into layout.buildDirectory.dir('pluginDirectory')
+}
+
+tasks.named('processTestResources') {
+    dependsOn tasks.named('copyCodecPlugin')
+}
