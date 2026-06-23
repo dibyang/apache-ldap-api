@@ -2,8 +2,42 @@ plugins {
     id 'base'
 }
 
+ext.releaseProperties = new Properties()
+
+def signingPropertiesFile = rootProject.file('signing.properties')
+
+if (signingPropertiesFile.exists()) {
+    signingPropertiesFile.withInputStream {
+        releaseProperties.load(it)
+    }
+}
+
 ext.requiredProperty = { name ->
     providers.gradleProperty(name).get()
+}
+
+ext.releaseProperty = { name ->
+    if (rootProject.hasProperty(name)) {
+        return rootProject.property(name).toString()
+    }
+
+    return releaseProperties.getProperty(name)
+}
+
+ext.releaseFileProperty = { name ->
+    def value = releaseProperty(name)
+
+    if (!value) {
+        return null
+    }
+
+    def candidate = file(value)
+
+    if (candidate.isAbsolute()) {
+        return candidate
+    }
+
+    return rootProject.file(value)
 }
 
 allprojects {
@@ -63,6 +97,108 @@ ext.libs = [
     slf4jLog4j12: "org.slf4j:slf4j-log4j12:${versions.slf4jLog4j12}",
     xmlApis: "xml-apis:xml-apis:${versions.xmlApis}"
 ]
+
+def isSnapshotVersion = {
+    rootProject.version.toString().endsWith('-SNAPSHOT')
+}
+
+def centralRepositoryUrl = {
+    if (isSnapshotVersion()) {
+        return rootProject.ext.releaseProperty('snapshotsRepository')
+    }
+
+    return rootProject.ext.releaseProperty('releasesRepository')
+}
+
+def centralPublishTaskName = 'publishMavenJavaPublicationToSonatypeRepository'
+
+tasks.register('validateCentralPublishConfiguration') {
+    group = 'publishing'
+    description = '检查 Maven Central/OSSRH 发布仓库、凭据和签名配置是否完整。'
+
+    doLast {
+        def requiredKeys = [
+            'releasesRepository',
+            'snapshotsRepository',
+            'ossrhUsername',
+            'ossrhPassword',
+            'signing.keyId',
+            'signing.password',
+            'signing.secretKeyRingFile'
+        ]
+
+        def missingKeys = requiredKeys.findAll { !rootProject.ext.releaseProperty(it) }
+
+        if (!missingKeys.isEmpty()) {
+            throw new GradleException("signing.properties 或 Gradle 属性缺少发布配置: ${missingKeys.join(', ')}")
+        }
+
+        def secretKeyRingFile = rootProject.ext.releaseFileProperty('signing.secretKeyRingFile')
+
+        if (!secretKeyRingFile.exists()) {
+            throw new GradleException('signing.secretKeyRingFile 指向的密钥环文件不存在')
+        }
+    }
+}
+
+tasks.register('releaseGate') {
+    group = 'verification'
+    description = '运行发布前本地门禁：完整构建、OSGi 测试和 publishToMavenLocal。'
+
+    dependsOn tasks.named('build')
+}
+
+tasks.register('publishSnapshotToCentral') {
+    group = 'publishing'
+    description = '发布 SNAPSHOT 版本到 signing.properties 中配置的 snapshotsRepository。'
+
+    dependsOn tasks.named('releaseGate')
+    dependsOn tasks.named('validateCentralPublishConfiguration')
+    dependsOn 'validateSnapshotPublishVersion'
+
+    doFirst {
+        if (!isSnapshotVersion()) {
+            throw new GradleException("当前版本 ${rootProject.version} 不是 SNAPSHOT，请使用 publishReleaseToCentralStaging")
+        }
+    }
+}
+
+tasks.register('publishReleaseToCentralStaging') {
+    group = 'publishing'
+    description = '发布正式版本到 signing.properties 中配置的 releasesRepository；仅上传到 staging，不自动 release。'
+
+    dependsOn tasks.named('releaseGate')
+    dependsOn tasks.named('validateCentralPublishConfiguration')
+    dependsOn 'validateReleasePublishVersion'
+
+    doFirst {
+        if (isSnapshotVersion()) {
+            throw new GradleException("当前版本 ${rootProject.version} 是 SNAPSHOT，正式发布前请先切换为非 SNAPSHOT 版本")
+        }
+    }
+}
+
+tasks.register('validateSnapshotPublishVersion') {
+    group = 'publishing'
+    description = '确认当前版本可以发布到 snapshot 仓库。'
+
+    doLast {
+        if (!isSnapshotVersion()) {
+            throw new GradleException("当前版本 ${rootProject.version} 不是 SNAPSHOT，请使用 publishReleaseToCentralStaging")
+        }
+    }
+}
+
+tasks.register('validateReleasePublishVersion') {
+    group = 'publishing'
+    description = '确认当前版本可以发布到 release/staging 仓库。'
+
+    doLast {
+        if (isSnapshotVersion()) {
+            throw new GradleException("当前版本 ${rootProject.version} 是 SNAPSHOT，正式发布前请先切换为非 SNAPSHOT 版本")
+        }
+    }
+}
 
 subprojects {
     plugins.withType(JavaPlugin).configureEach {
@@ -132,13 +268,118 @@ subprojects {
                         from components.java
                     }
                 }
+
+                def repositoryUrl = centralRepositoryUrl()
+
+                if (repositoryUrl) {
+                    repositories {
+                        maven {
+                            name = 'sonatype'
+                            url = uri(repositoryUrl)
+                            credentials {
+                                username = rootProject.ext.releaseProperty('ossrhUsername')
+                                password = rootProject.ext.releaseProperty('ossrhPassword')
+                            }
+                        }
+                    }
+                }
             }
 
             afterEvaluate {
                 publishing.publications.named('mavenJava') {
                     artifactId = project.ext.mavenArtifactId
+
+                    pom {
+                        name = project.ext.mavenArtifactId
+                        description = project.description
+                        url = 'https://github.com/dibyang/apache-ldap-api'
+
+                        licenses {
+                            license {
+                                name = 'The Apache License, Version 2.0'
+                                url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                                distribution = 'repo'
+                            }
+                        }
+
+                        scm {
+                            connection = 'scm:git:git://github.com/dibyang/apache-ldap-api.git'
+                            developerConnection = 'scm:git:ssh://git@github.com/dibyang/apache-ldap-api.git'
+                            url = 'https://github.com/dibyang/apache-ldap-api'
+                        }
+
+                        developers {
+                            developer {
+                                id = 'dibyang'
+                                name = 'dibyang'
+                            }
+                        }
+                    }
+                }
+
+                def signingKeyId = rootProject.ext.releaseProperty('signing.keyId')
+                def signingPassword = rootProject.ext.releaseProperty('signing.password')
+                def signingSecretKeyRingFile = rootProject.ext.releaseFileProperty('signing.secretKeyRingFile')
+
+                if (signingKeyId && signingPassword && signingSecretKeyRingFile) {
+                    ext.set('signing.keyId', signingKeyId)
+                    ext.set('signing.password', signingPassword)
+                    ext.set('signing.secretKeyRingFile', signingSecretKeyRingFile.absolutePath)
                 }
             }
+        }
+    }
+}
+
+gradle.projectsEvaluated {
+    def signingKeyId = rootProject.ext.releaseProperty('signing.keyId')
+    def signingPassword = rootProject.ext.releaseProperty('signing.password')
+    def signingSecretKeyRingFile = rootProject.ext.releaseFileProperty('signing.secretKeyRingFile')
+
+    if (signingKeyId && signingPassword && signingSecretKeyRingFile) {
+        subprojects.findAll { project ->
+            project.plugins.hasPlugin('maven-publish')
+        }.each { project ->
+            if (!project.plugins.hasPlugin('signing')) {
+                project.pluginManager.apply('signing')
+            }
+
+            project.ext.set('signing.keyId', signingKeyId)
+            project.ext.set('signing.password', signingPassword)
+            project.ext.set('signing.secretKeyRingFile', signingSecretKeyRingFile.absolutePath)
+
+            if (!project.tasks.findByName('signMavenJavaPublication')) {
+                project.signing {
+                    sign project.publishing.publications.getByName('mavenJava')
+                }
+            }
+        }
+    }
+
+    def centralPublishTasks = subprojects.collect { project ->
+        project.tasks.matching { it.name == centralPublishTaskName }
+    }
+
+    tasks.named('releaseGate') {
+        dependsOn ':api-integ-osgi:test'
+        dependsOn ':api-integ-osgi2:test'
+        dependsOn subprojects.collect { project ->
+            project.tasks.matching { it.name == 'publishToMavenLocal' }
+        }
+    }
+
+    tasks.named('publishSnapshotToCentral') {
+        dependsOn centralPublishTasks
+    }
+
+    tasks.named('publishReleaseToCentralStaging') {
+        dependsOn centralPublishTasks
+    }
+
+    centralPublishTasks.each { taskCollection ->
+        taskCollection.configureEach {
+            mustRunAfter tasks.named('validateSnapshotPublishVersion')
+            mustRunAfter tasks.named('validateReleasePublishVersion')
         }
     }
 }

@@ -1,5 +1,7 @@
 # 构建与测试
 
+[English version](en/BUILDING.md)
+
 本文档说明如何在本地构建、测试和打包 Apache LDAP API。
 
 ## 前置条件

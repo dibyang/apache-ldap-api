@@ -1,5 +1,7 @@
 # 支持
 
+[English version](docs/en/SUPPORT.md)
+
 ## 获取帮助
 
 请优先通过 GitHub Issue 提问或报告问题。提交前建议先搜索已有 Issue，避免重复讨论。

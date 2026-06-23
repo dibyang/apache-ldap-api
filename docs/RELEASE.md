@@ -1,5 +1,7 @@
 # 发布准备
 
+[English version](en/RELEASE.md)
+
 本文档描述本仓库的发布准备流程。当前仓库已经迁移为纯 Gradle 项目，不再使用 Maven POM 作为发布入口。
 
 ## 发布前检查
@@ -80,14 +82,60 @@ distribution/build/distributions/
 
 ## 发布到远程仓库
 
-当前 Gradle 构建包含 `maven-publish` 基础配置，但未在开源文档中定义远程发布凭据和目标仓库。
+当前 Gradle 构建使用 `maven-publish` 和 `signing` 发布到 Maven Central/OSSRH。发布凭据和签名信息来自根目录的 `signing.properties`，该文件只应存在于本地环境，不要提交到 Git。
 
-在正式启用远程发布前，需要先补充：
+`signing.properties` 需要提供以下键：
 
-- 发布仓库地址。
-- 凭据注入方式。
-- 签名策略。
-- staging 或审核流程。
-- 回滚和重发策略。
+```properties
+releasesRepository=...
+snapshotsRepository=...
+ossrhUsername=...
+ossrhPassword=...
+signing.keyId=...
+signing.password=...
+signing.secretKeyRingFile=...
+```
 
-在这些信息明确前，不要把本地构建命令等同于正式发布。
+发布配置也可以通过 Gradle 属性覆盖，例如 `-PossrhUsername=...`。日志和提交中不要输出这些值。
+
+## 发布任务
+
+检查发布配置：
+
+```powershell
+.\gradlew.bat validateCentralPublishConfiguration
+```
+
+运行完整发布前门禁：
+
+```powershell
+.\gradlew.bat releaseGate
+```
+
+该任务会运行完整构建、OSGi 测试和 `publishToMavenLocal`，用于检查 jar、sources jar、javadoc jar、POM 元数据和签名产物是否能本地生成。
+
+发布 `SNAPSHOT` 版本到 snapshot 仓库：
+
+```powershell
+.\gradlew.bat publishSnapshotToCentral
+```
+
+发布正式版本到 release/staging 仓库：
+
+```powershell
+.\gradlew.bat publishReleaseToCentralStaging
+```
+
+`publishReleaseToCentralStaging` 要求 `projectVersion` 不是 `-SNAPSHOT`，并只负责上传到 `releasesRepository` 对应的 staging 仓库；它不会自动执行中央仓库可见发布。
+
+## 中央仓库审核流程
+
+1. 将 `gradle.properties` 中的 `projectVersion` 改为正式版本号。
+2. 更新 `CHANGELOG.md` 和必要的发布说明。
+3. 运行 `.\gradlew.bat releaseGate`。
+4. 本地提交发布版本改动，创建并推送 tag。
+5. 运行 `.\gradlew.bat publishReleaseToCentralStaging` 上传到 staging。
+6. 在 Sonatype/Nexus/Central Portal 中人工检查 artifacts、POM、签名、依赖和许可证信息。
+7. 确认无误后，再执行中央仓库 release/publish 操作。
+
+如果远程上传只成功了一部分模块，不要继续使用同一版本号补发。应先确认哪些坐标已经进入远程仓库，再决定废弃该版本或升级到新版本重新发布。

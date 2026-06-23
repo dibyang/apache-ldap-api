@@ -1,5 +1,7 @@
 # 变更记录
 
+[English version](docs/en/CHANGELOG.md)
+
 本文件记录项目的重要变更。版本号来自 `gradle.properties` 中的 `projectVersion`。
 
 ## 未发布
@@ -9,8 +11,10 @@
 - 项目迁移为 Gradle 7.6 多模块构建。
 - 项目版本和依赖版本集中维护在 `gradle.properties`。
 - 删除 Maven POM，仓库后续作为纯 Gradle 项目维护。
+- 补齐 Maven Central/OSSRH 发布任务，支持本地签名、`publishToMavenLocal` 门禁和 staging 上传。
 - 补齐开源项目入口文档、贡献说明、安全策略、行为准则、构建说明、架构说明和发布准备说明。
 - 补齐开源反馈入口：新增 GitHub Bug 报告表单、Issue contact links、Bug 报告指南、安全报告说明和英文贡献/安全/Bug 报告文档。
+- 统一文档语言策略：中文作为主文档，英文副本独立放在 `docs/en/`，并补齐中英文切换链接。
 
 ### 修复
 

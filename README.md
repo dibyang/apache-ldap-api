@@ -1,5 +1,7 @@
 # Apache LDAP API
 
+[English version](docs/en/README.md)
+
 Apache LDAP API 是一个面向 Java 的 LDAP 协议与目录数据模型库，提供 ASN.1/BER 编解码、LDAP 模型、LDAP 编解码、客户端 API、Schema 数据、扩展控件、DSML 支持以及 OSGi 集成验证。
 
 本仓库已经迁移为纯 Gradle 多模块项目，不再维护 Maven `pom.xml`。项目版本和依赖版本统一维护在 `gradle.properties`。
@@ -101,9 +103,8 @@ Linux/macOS:
 - 获取支持：`SUPPORT.md`
 - 行为准则：`CODE_OF_CONDUCT.md`
 - 变更记录：`CHANGELOG.md`
-- English contribution guide: `docs/en/CONTRIBUTING.md`
-- English security policy: `docs/en/SECURITY.md`
-- English bug reporting guide: `docs/en/bug-reporting.md`
+
+英文副本统一存放在 `docs/en/`，可从各中文主文档顶部的语言切换链接进入。
 
 ## 反馈入口
 

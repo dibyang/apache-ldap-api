@@ -1,5 +1,7 @@
 # 模块结构
 
+[English version](en/ARCHITECTURE.md)
+
 Apache LDAP API 是一个按协议层、模型层、客户端层和扩展功能拆分的 Gradle 多模块项目。
 
 ## 分层概览

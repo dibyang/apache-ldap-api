@@ -1,5 +1,7 @@
 # 行为准则
 
+[English version](docs/en/CODE_OF_CONDUCT.md)
+
 本项目希望为所有参与者提供开放、友好、专业的协作环境。
 
 ## 我们鼓励

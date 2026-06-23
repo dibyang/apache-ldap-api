@@ -64,8 +64,10 @@ Documentation-only changes do not require the full Gradle build, but you should 
 ## Documentation Guidelines
 
 - Update documentation when user-visible behavior, build commands, module boundaries, or release workflow change.
-- Chinese is the primary documentation language.
-- English documentation belongs under `docs/en/`; avoid mixing Chinese and English in the same body section.
+- Chinese is the primary documentation language; English is maintained as a translation or auxiliary version.
+- English documentation belongs under `docs/en/`. Do not place English counterparts next to Chinese primary documents at the repository root, and do not mix Chinese and English explanatory text in the same body section.
+- Chinese primary documents should link to the English counterpart at the top, and English counterparts should link back to the Chinese primary document at the top.
+- When adding or changing README, contributing guide, security policy, support guide, code of conduct, build guide, architecture guide, release preparation guide, bug reporting guide, or changelog, check the matching English counterpart and language switch links.
 
 ## Pull Request Checklist
 
