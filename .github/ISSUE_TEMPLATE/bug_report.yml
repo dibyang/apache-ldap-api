@@ -1,0 +1,119 @@
+name: Bug 报告
+description: 报告 Apache LDAP API 中可复现的缺陷
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你反馈问题。请不要在公开 Issue 中披露未修复安全漏洞的细节；安全问题请先阅读 `SECURITY.md`。
+
+  - type: input
+    id: version
+    attributes:
+      label: 项目版本或提交
+      description: 请填写发布版本、Gradle 坐标版本或提交哈希。
+      placeholder: "1.0.0-M20V20260126 / commit hash"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: 受影响模块或组件
+      multiple: true
+      options:
+        - ASN.1 / BER
+        - LDAP model / DN / LDIF / Schema
+        - LDAP codec
+        - LDAP client API
+        - LDAP net MINA
+        - LDAP extras
+        - DSML
+        - OSGi integration
+        - Gradle build / distribution
+        - Documentation
+        - Other / unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: usage_path
+    attributes:
+      label: 使用路径或集成方式
+      options:
+        - Direct library usage
+        - LDAP client connection
+        - Codec encode/decode
+        - Schema / LDIF processing
+        - OSGi bundle
+        - Gradle build or test
+        - Framework integration
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+      description: 请说明你期望项目如何工作。
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 请说明实际结果、错误信息或与期望不一致的地方。
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: 最小复现方式
+      description: 请提供最小代码、测试、LDIF、Schema、LDAP 请求或 Gradle 命令。能放在单元测试里的复现最有帮助。
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 异常堆栈或相关日志
+      description: 请粘贴最相关的异常堆栈、测试失败或构建日志片段，避免包含凭据和生产数据。
+      render: shell
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 请填写 JDK、操作系统、Gradle、依赖坐标、LDAP 服务端或 OSGi 容器等信息。
+      value: |
+        - JDK:
+        - OS:
+        - Gradle:
+        - Dependency coordinates:
+        - LDAP server / OSGi container:
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 其他上下文
+      description: 如并发条件、网络条件、Schema 数据、兼容性约束或你已经尝试过的排查步骤。
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 我已搜索现有 Issue，确认这不是重复报告。
+          required: true
+        - label: 我已尽量使用最新代码或当前维护版本复现。
+          required: true
+        - label: 我提供了最小复现方式或说明了无法提供的原因。
+          required: true
+        - label: 这不是未修复安全漏洞的公开披露。
+          required: true

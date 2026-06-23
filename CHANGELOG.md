@@ -10,6 +10,7 @@
 - 项目版本和依赖版本集中维护在 `gradle.properties`。
 - 删除 Maven POM，仓库后续作为纯 Gradle 项目维护。
 - 补齐开源项目入口文档、贡献说明、安全策略、行为准则、构建说明、架构说明和发布准备说明。
+- 补齐开源反馈入口：新增 GitHub Bug 报告表单、Issue contact links、Bug 报告指南、安全报告说明和英文贡献/安全/Bug 报告文档。
 
 ### 修复
 

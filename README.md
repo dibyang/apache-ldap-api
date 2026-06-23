@@ -95,10 +95,21 @@ Linux/macOS:
 - 构建与测试：`docs/BUILDING.md`
 - 模块结构：`docs/ARCHITECTURE.md`
 - 发布准备：`docs/RELEASE.md`
+- Bug 报告：`docs/bug-reporting.md`
 - 贡献指南：`CONTRIBUTING.md`
 - 安全披露：`SECURITY.md`
+- 获取支持：`SUPPORT.md`
 - 行为准则：`CODE_OF_CONDUCT.md`
 - 变更记录：`CHANGELOG.md`
+- English contribution guide: `docs/en/CONTRIBUTING.md`
+- English security policy: `docs/en/SECURITY.md`
+- English bug reporting guide: `docs/en/bug-reporting.md`
+
+## 反馈入口
+
+- 可复现的缺陷请使用 GitHub 的 Bug 报告表单，并参考 `docs/bug-reporting.md` 准备最小复现。
+- 未修复安全漏洞不要提交公开 Issue，请按 `SECURITY.md` 使用私有安全报告或创建不含漏洞细节的占位 Issue。
+- 贡献代码、测试或文档前请阅读 `CONTRIBUTING.md`。
 
 ## 版本管理
 

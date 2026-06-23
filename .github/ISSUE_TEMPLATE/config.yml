@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安全漏洞报告
+    url: https://github.com/dibyang/apache-ldap-api/security/advisories/new
+    about: 请不要公开披露未修复漏洞细节；如私有报告未启用，请按 SECURITY.md 创建不含细节的占位 Issue。
+  - name: Bug 报告指南
+    url: https://github.com/dibyang/apache-ldap-api/blob/master/docs/bug-reporting.md
+    about: 查看如何准备可复现的 bug 报告。
+  - name: 贡献指南
+    url: https://github.com/dibyang/apache-ldap-api/blob/master/CONTRIBUTING.md
+    about: 查看开发、测试、提交和 Pull Request 要求。

@@ -1,6 +1,15 @@
 # 贡献指南
 
+[English version](docs/en/CONTRIBUTING.md)
+
 感谢你愿意改进 Apache LDAP API。这个仓库是一个纯 Gradle 多模块 Java 项目，贡献时请保持构建、测试和文档同步。
+
+## 反馈入口
+
+- 可复现 bug：使用 GitHub Bug 报告表单，并参考 `docs/bug-reporting.md`。
+- 安全漏洞：不要在公开 Issue 中披露利用细节，请按 `SECURITY.md` 私下报告。
+- 文档修复和小型代码改动：可以直接提交聚焦的 Pull Request。
+- 设计、兼容性或公共 API 变更：建议先提交 Issue 讨论方向。
 
 ## 开发环境
 
@@ -34,6 +43,8 @@
 ```powershell
 .\gradlew.bat :api-integ-osgi:test :api-integ-osgi2:test
 ```
+
+纯文档变更不要求运行完整 Gradle 构建，但应检查 Markdown diff 并运行 `git diff --check`。
 
 ## 代码规范
 

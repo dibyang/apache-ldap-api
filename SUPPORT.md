@@ -4,6 +4,8 @@
 
 请优先通过 GitHub Issue 提问或报告问题。提交前建议先搜索已有 Issue，避免重复讨论。
 
+可复现 bug 请使用 GitHub Bug 报告表单，并参考 `docs/bug-reporting.md` 准备最小复现。安全问题请参考 `SECURITY.md`，不要在公开 Issue 中披露未修复漏洞细节。
+
 ## 提问时请提供
 
 - 使用的项目版本或提交哈希。
@@ -27,4 +29,8 @@
 - 私有凭据、内部地址、生产数据或用户隐私。
 - 与本项目无关的通用 LDAP 运维问题。
 
-安全问题请参考 `SECURITY.md`。
+## 相关文档
+
+- Bug 报告指南：`docs/bug-reporting.md`
+- 贡献指南：`CONTRIBUTING.md`
+- 安全策略：`SECURITY.md`
