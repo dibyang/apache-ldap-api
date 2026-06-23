@@ -6,6 +6,10 @@ This file records important project changes. Version numbers come from `projectV
 
 ## Unreleased
 
+No changes yet.
+
+## 1.0.0-M21 - 2026-06-23
+
 ### Changed
 
 - Migrated the project to a Gradle 7.6 multi-module build.

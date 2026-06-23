@@ -363,7 +363,14 @@ gradle.projectsEvaluated {
     tasks.named('releaseGate') {
         dependsOn ':api-integ-osgi:test'
         dependsOn ':api-integ-osgi2:test'
-        dependsOn subprojects.collect { project ->
+        dependsOn subprojects.findAll { project ->
+            project.name != 'distribution'
+        }.collect { project ->
+            project.tasks.matching { it.name == 'build' }
+        }
+        dependsOn subprojects.findAll { project ->
+            project.name != 'distribution'
+        }.collect { project ->
             project.tasks.matching { it.name == 'publishToMavenLocal' }
         }
     }
