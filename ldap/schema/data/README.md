@@ -16,11 +16,17 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
-# Schemma Data
+# Schema 数据
 
-## OID Allocation Policy (generated using /src/main/scripts/oid_allocation.pl)
+[English version](../../../docs/en/schema-data.md)
 
-OID values are allocated as follows:
+本文档记录 `ldap/schema/data` 模块中的 Schema OID 分配策略。OID、属性类型、对象类和 Schema 名称是协议与数据标识符，正文中按原始名称保留，不翻译。
+
+## OID 分配策略
+
+以下清单由 `/src/main/scripts/oid_allocation.pl` 生成。
+
+OID 值分配如下：
 
 ### `ou=syntaxes` and `ou=syntaxCheckers`
 
@@ -315,4 +321,3 @@ OID values are allocated as follows:
 - 1.3.6.1.4.1.18060.0.4.1.5.6: javaxScriptLangId
 - 1.3.6.1.4.1.18060.0.4.1.5.7: javaxScriptCode
 - 1.3.6.1.4.1.18060.0.4.1.5.8: javaxScriptStoredProcUnit
-
