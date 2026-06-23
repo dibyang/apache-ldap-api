@@ -14,6 +14,7 @@
 
 ### 修复
 
+- 修复 `Strings.toLowerCaseAscii` 处理中文 DN 等非 ASCII 字符时可能抛出数组越界异常的问题。
 - 修复 Gradle 构建下 OSGi 测试依赖装配、manifest 合并和 bundle 名称适配问题。
 - 稳定 `SubtreeSpecificationParserTest`，避免测试类级别并发 runner 与共享 parser 状态互相影响。
 

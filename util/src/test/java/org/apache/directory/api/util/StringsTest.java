@@ -205,6 +205,21 @@ public class StringsTest
     }
 
 
+    @Test
+    public void testToLowerCaseAsciiKeepsNonAsciiCharacters()
+    {
+        assertEquals( "cn=\u4E2D\u6587\u7528\u6237,ou=people",
+            Strings.toLowerCaseAscii( "CN=\u4E2D\u6587\u7528\u6237,OU=People" ) );
+    }
+
+
+    @Test
+    public void testToUpperCaseAsciiKeepsNonAsciiCharacters()
+    {
+        assertEquals( "ABC\u4E2D\u6587-12", Strings.toUpperCaseAscii( "AbC\u4E2D\u6587-12" ) );
+    }
+
+
     /**
      * Test the DnUtils AreEquals method
      */

@@ -1843,7 +1843,7 @@ public final class Strings
 
         for ( int i = 0; i < chars.length; i++ )
         {
-            chars[i] = TO_LOWER_CASE[chars[i]];
+            chars[i] = toLowerCaseAscii( chars[i] );
         }
 
         return new String( chars );
@@ -1869,7 +1869,7 @@ public final class Strings
 
         for ( int i = 0; i < chars.length; i++ )
         {
-            chars[i] = TO_LOWER_CASE[chars[i]];
+            chars[i] = toLowerCaseAscii( chars[i] );
         }
 
         return new String( chars );
@@ -1921,7 +1921,7 @@ public final class Strings
 
         for ( int i = 0; i < chars.length; i++ )
         {
-            chars[i] = UPPER_CASE[chars[i]];
+            chars[i] = toUpperCaseAscii( chars[i] );
         }
 
         return new String( chars );
@@ -1947,10 +1947,32 @@ public final class Strings
 
         for ( int i = 0; i < chars.length; i++ )
         {
-            chars[i] = UPPER_CASE[chars[i]];
+            chars[i] = toUpperCaseAscii( chars[i] );
         }
 
         return new String( chars );
+    }
+
+
+    private static char toLowerCaseAscii( char value )
+    {
+        if ( value < TO_LOWER_CASE.length )
+        {
+            return TO_LOWER_CASE[value];
+        }
+
+        return value;
+    }
+
+
+    private static char toUpperCaseAscii( char value )
+    {
+        if ( value < UPPER_CASE.length )
+        {
+            return UPPER_CASE[value];
+        }
+
+        return value;
     }
 
 
